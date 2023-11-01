@@ -20,3 +20,13 @@ const cipher = new Cipher('MyKeyGoesHere');
 
     console.log('Passed special characters:', decoded === message);
 })();
+
+//test base62
+(async function () {
+    const date = new Date().getTime();
+
+    const encoded = await cipher.toBase62(date);
+    const decoded = await cipher.fromBase62(encoded);
+    
+    console.log('Passed alphanumeric:', decoded === date);
+})();
